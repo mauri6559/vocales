@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">20 Abril</string>
+    <string name="hint_palabra">Ingrese su Palabra</string>
+    <string name="btn_Procesar">Procesar</string>
+    <string name="btn_contar">Contar</string>
+    <string name="cb_minuscula">Minuscula?</string>
+</resources>

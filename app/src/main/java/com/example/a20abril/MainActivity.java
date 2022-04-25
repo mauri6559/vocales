@@ -8,6 +8,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
+
 //contains
 
 //si es activity es una pantalla
@@ -44,8 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void verificarVocales() {
+        /*
+        FORMA MAS LARGA
         palabra =etPalabra.getText().toString();
-        palabra.toLowerCase();
+        palabra = palabra.toLowerCase();
+        contador = 0;
         for (int i = this.palabra.length()-1; i >=0 ; i--) {
             if ((palabra.charAt(i)=='a') || (palabra.charAt(i)=='e')|| (palabra.charAt(i)=='i') || (palabra.charAt(i)=='o') || (palabra.charAt(i)=='u'))
             {
@@ -55,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
         Cont = Integer.toString(contador);
 
         Toast.makeText(this,"La palabra "+this.palabra+" tiene " +Cont+ " Vocales", Toast.LENGTH_SHORT).show();
+         */
+        ArrayList<Character> vocales = new ArrayList<>(Arrays.asList('a','e','i','o','u'));
+        int cantidadVocales = 0;
+        for(int i=0; i<palabra.length();i++) {
+            if(vocales.contains(palabra.charAt(i))) {
+                cantidadVocales++;
+            }
+        }
+        Toast.makeText(this, "Tiene: " + cantidadVocales, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -68,8 +84,15 @@ public class MainActivity extends AppCompatActivity {
         palabra = etPalabra.getText().toString();
         //getChecked --- isChecked sigue siendo un getter
         esMinuscula = cbMinusculas.isChecked();
+        convertirAMinuscula();
+    }
+
+    private void convertirAMinuscula(){
+        if (esMinuscula){
+            palabra = palabra.toLowerCase();
+        }
     }
 
 
-
+//SE PUEDE BUSCAR QUE ES HASHMAPS
 }

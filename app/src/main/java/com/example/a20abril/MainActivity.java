@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String palabra;
     private Boolean esMinuscula;
+    private int contador = 0;
+    private String Cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void verificarVocales() {
-        int contador = 0;
-        String mensa = "";
-        for (int i = 0; i < palabra.length(); i++) {
-            if ((palabra.charAt(i) == 'a') || (palabra.charAt(i) == 'b') || (palabra.charAt(i) == 'c') || (palabra.charAt(i) == 'd') || (palabra.charAt(i) == 'e')) {
+        palabra =etPalabra.getText().toString();
+        palabra.toLowerCase();
+        for (int i = this.palabra.length()-1; i >=0 ; i--) {
+            if ((palabra.charAt(i)=='a') || (palabra.charAt(i)=='e')|| (palabra.charAt(i)=='i') || (palabra.charAt(i)=='o') || (palabra.charAt(i)=='u'))
+            {
                 contador++;
-                mensa = "tiene: " + contador;
             }
         }
+        Cont = Integer.toString(contador);
+
+        Toast.makeText(this,"La palabra "+this.palabra+" tiene " +Cont+ " Vocales", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -65,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
         esMinuscula = cbMinusculas.isChecked();
     }
 
-    private void mostrar(){
 
-        Toast.makeText(this, verificarVocales(), Toast.LENGTH_SHORT).show();
-    }
 
 }
